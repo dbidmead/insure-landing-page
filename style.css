@@ -25,6 +25,12 @@ body {
   font-size: 16px;
 }
 
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 h1,
 h2 {
   font-family: var(--font-heading);
@@ -42,6 +48,16 @@ p {
   opacity: 0.7;
   line-height: 1.5em;
   letter-spacing: 0.05em;
+}
+
+.hero-img-m,
+.bg-right-m,
+.bg-left-m,
+.outtro-bg-m,
+.footer-bg-m,
+.nav-bg-m,
+.hamburger {
+  display: none;
 }
 
 section,
@@ -187,7 +203,7 @@ h1 {
 
 .intro-grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 3rem;
   margin-top: 2rem;
 }
@@ -264,8 +280,9 @@ ul {
 
 .footer-grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   margin-top: 2rem;
+  gap: 3rem;
 }
 
 .footer-cell {
@@ -277,7 +294,11 @@ ul {
 .footer-cell > ul {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.7em;
+}
+
+.footer-cell > h3 {
+  z-index: 10;
 }
 
 .footer-link > a {
@@ -305,4 +326,215 @@ ul {
 
 .attribution a:hover {
   color: var(--medium);
+}
+
+@media screen and (max-width: 700px) {
+  * {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  section,
+  footer {
+    padding: 5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-img-d,
+  .bg-right-d,
+  .bg-left-d,
+  .outtro-bg-d,
+  .footer-bg-d {
+    display: none;
+  }
+
+  .hero-img-m,
+  .bg-right-m,
+  .bg-left-m,
+  .outtro-bg-m,
+  .footer-bg-m {
+    display: block;
+  }
+
+  .bg-right-m,
+  .bg-left-m {
+    position: absolute;
+  }
+
+  .bg-right-m {
+    bottom: -35%;
+    right: 0;
+  }
+
+  .bg-left-m {
+    top: 0;
+    left: 0;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 1.75rem;
+    height: 1.75rem;
+    position: relative;
+    z-index: 100;
+    border: 1px solid var(--blue-navy);
+  }
+  .bar {
+    position: absolute;
+    left: 0.26rem;
+    top: 47%;
+    width: 1.1rem;
+    height: 2px;
+    background-color: var(--blue-navy);
+    transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
+  }
+  #a {
+    transform: translateY(-0.35rem);
+  }
+  #c {
+    transform: translateY(0.35rem);
+  }
+  .active > #a {
+    transform: rotate(45deg);
+  }
+  .active > #b {
+    opacity: 0;
+  }
+  .active > #c {
+    transform: rotate(-45deg);
+  }
+
+  .nav-section {
+    z-index: 502;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  .nav-bg-m {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-menu {
+    height: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: flex !important;
+    flex-direction: column;
+    background-color: var(--dark);
+    width: 100%;
+    z-index: 0;
+  }
+
+  .expanded {
+    height: auto;
+    padding: 3rem 0 0;
+    z-index: 501;
+    opacity: 1;
+  }
+
+  .expanded > li > a {
+    color: var(--light);
+  }
+
+  .overlay {
+    opacity: 0;
+    height: 0;
+  }
+
+  .show-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+    opacity: 50%;
+    display: block;
+    z-index: 500;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-txt {
+    width: 90%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-txt > .line-decoration {
+    display: none;
+  }
+
+  .intro {
+    height: auto;
+  }
+
+  .cell {
+    align-items: center;
+  }
+
+  .outtro {
+    padding-bottom: 10rem;
+  }
+
+  .outtro-content {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 4.5rem 2rem;
+    justify-content: center;
+  }
+
+  .outtro-content > h1 {
+    width: 100%;
+    font-size: 2.75rem;
+    z-index: 4;
+  }
+
+  .outtro-bg-m {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  footer {
+    gap: 2rem;
+  }
+
+  hr {
+    width: 90%;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 0;
+  }
+
+  .footer-bg-m {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .social-icon > a > i {
+    z-index: 100;
+    position: relative;
+  }
 }
